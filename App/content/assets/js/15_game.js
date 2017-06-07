@@ -60,7 +60,7 @@ var actorChars = {
 
 function Player(pos) {
   this.pos = pos.plus(new Vector(0, -0.5));
-  this.size = new Vector(0.8, 1.5);
+  this.size = new Vector(1, 1);
   this.speed = new Vector(0, 0);
 }
 Player.prototype.type = "player";
@@ -358,7 +358,6 @@ function runGame(plans, Display) {
           } else {
               //生命为0时直接从起始关开始
               alert("游戏结束！");
-              startLevel(0);
           }
       }
       else if (n < plans.length - 1)

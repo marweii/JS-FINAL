@@ -7,7 +7,10 @@
 
 .actor  { position: absolute;  }
 .coin   { background: rgb(241, 229, 89); }
-.player { background: rgb(64, 64, 64); }
+.player { 
+  background-image:url(../imagine/touxiang.png) ;
+  background-size: cover;
+ }
 
 .game {
   overflow: hidden;
