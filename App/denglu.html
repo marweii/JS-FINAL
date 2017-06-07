@@ -9,21 +9,18 @@ function r() {
    var username =userid.value;
    var pwdid=document.getElementById("password");
    var password =pwdid.value;
+
    var storage = window.localStorage;
    var ys = 0; 
-   for (var i=0, len = storage.length; i<len; i++){   
-   var ys = 1;    
+   for (var i=0, len = storage.length; i<len; i++){      
    var key = storage.key(i);     
-   var value = storage.getItem(key); 
-   if(username==value){
-     var conf = localStorage.getItem("value");
-     if(password==conf){
-     alert("登录成功！");
+   if(username==key){
+     var value = storage.getItem(key); 
+     if(password==value){
+          ys = 1;  
      window.location.href="file:///D:/GitHub/JS-FINAL/App/index.html";
-    }else{
-        alert("密码错误！");
+        }
     }
-   }
 }
 if(ys==0){
 alert("账号或者密码错误！");
@@ -41,8 +38,7 @@ if (typeof(Storage) !== "undefined") {
    var storage = window.localStorage;
    for (var i=0, len = storage.length; i<len; i++){   
    var key = storage.key(i);     
-   var value = storage.getItem(key); 
-   if(username==value){
+   if(username==key){
         alert("账号已存在！");
         temp =1;
    }

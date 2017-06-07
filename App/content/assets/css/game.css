@@ -3,10 +3,12 @@
                  border-spacing: 0;   }
 .background td { padding: 0;          }
 .lava          { background: rgb(255, 100, 100); }
-.wall          { background: white;   }
+.wall          { background-image:url(../imagine/P1.png) ;
+  background-size: cover;   }
 
 .actor  { position: absolute;  }
-.coin   { background: rgb(241, 229, 89); }
+.coin   { background-image:url(../imagine/P2.png) ;
+  background-size: cover;  }
 .player { 
   background-image:url(../imagine/touxiang.png) ;
   background-size: cover;
