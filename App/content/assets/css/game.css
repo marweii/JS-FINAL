@@ -13,6 +13,10 @@
   background-image:url(../imagine/touxiang.png) ;
   background-size: cover;
  }
+ *{
+   margin: 0;
+   padding: 0;
+ }
 
 .game {
   overflow: hidden;
@@ -26,4 +30,10 @@
 }
 .won .player {
   box-shadow: -4px -7px 8px white, 4px -7px 8px white;
+}
+#class{
+  position: absolute;
+  left: 600px;
+  top: 80px;
+  
 }

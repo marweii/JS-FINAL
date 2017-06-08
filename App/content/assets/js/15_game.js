@@ -279,19 +279,26 @@ Player.prototype.act = function(step, level, keys) {
   }
 };
 
+var x = 0; 
 Level.prototype.playerTouched = function(type, actor) {
   if (type == "lava" && this.status == null) {
     this.status = "lost";
     this.finishDelay = 1;
   } else if (type == "coin") {
+      x = x +1;
+    document.getElementById("coinNum").innerHTML=x;
+     
     this.actors = this.actors.filter(function(other) {
       return other != actor;
+      
     });
     if (!this.actors.some(function(actor) {
+        
       return actor.type == "coin";
     })) {
       this.status = "won";
       this.finishDelay = 1;
+      
     }
   }
 };
@@ -357,6 +364,7 @@ function runGame(plans, Display) {
               startLevel(n);
           } else {
               //生命为0时直接从起始关开始
+              document.getElementById("finish").innerHTML=1;
               alert("游戏结束！");
           }
       }

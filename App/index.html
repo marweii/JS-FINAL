@@ -6,11 +6,56 @@
 <link rel="stylesheet" href="content/assets/css/game.css">
 
 <head>
-  <EMBED src="fc.mp3" autostart="true" loop="true" width="80" height="20"></EMBED>
-  </head>
+  <EMBED src="fc.mp3" autostart="true" loop="true" width="80" height="80"></EMBED>
+</head>
 
 <body>
   <script>
     runGame(GAME_LEVELS, DOMDisplay);
   </script>
+
+<script>
+  
+
+    function test(){
+      var msg = sessionStorage.key(0);
+      var tr = document.createElement("tr");
+      var td1 = document.createElement("td");
+      var td2 = document.createElement("td");
+      td2.id='coinNum';
+      tr.align = "center";
+      td1.innerHTML = msg;
+      td2.innerHTML = 0;
+      tr.appendChild(td1);
+      tr.appendChild(td2);    
+      document.getElementById("table1").appendChild(tr);
+    }
+    document.body.onload = function(){
+      test();
+    }
+
+</script>
+
+
+<div  id="class">
+<table border="1" width= 200px id="table1">
+  <tr>
+    <th align=center>账号</th>
+    <th align=center>积分</th>
+  </tr>
+  <!--<tr>
+    <td align=center>玩家1<output type="text" name="first" id="first"/td>
+    <td align=center>3<output type="text" name="firstmark" id="firstmark"/td>
+  </tr>
+  <tr>
+    <td align=center>玩家2<output type="text" name="second" id="second"/td>
+    <td align=center>2<output type="text" name="secondmark" id="secondmark"/td>
+  </tr>-->
+  <!--<tr>
+    <td align=center id='playname' >玩家3<output type="text" name="third" /td>
+    <td align=center id='coinNum'>0<output type="text" name="thirdmark" /td>
+  </tr>-->
+</table>
+</div>
+
 </body>
