@@ -286,6 +286,7 @@ Level.prototype.playerTouched = function(type, actor) {
     this.finishDelay = 1;
   } else if (type == "coin") {
       x = x +1;
+      
     document.getElementById("coinNum").innerHTML=x;
      
     this.actors = this.actors.filter(function(other) {
@@ -352,19 +353,72 @@ function runLevel(level, Display, andThen) {
 
 function runGame(plans, Display) {
   //初始生命设为3
-    var life = 3;
+    var life = 1;
   function startLevel(n) {
     runLevel(new Level(plans[n]), Display, function(status) {
       if (status == "lost") {
         //当状态置为“lost”时，life-1
           life = life - 1;
+          var tt = sessionStorage.length -1;
+          var name1 = sessionStorage.key(tt);
+          var coinsum=document.getElementById("coinNum").innerHTML;
+          localStorage.setItem(name1,coinsum);
+          var max = localStorage.getItem(localStorage.key(0));
+          for(var i=1, len = localStorage.length; i<len ; i++){
+                if(max<localStorage.getItem(localStorage.key(i))){
+                  var first = i;
+                  max = localStorage.getItem(localStorage.key(i));
+                }
+          }
+          var max1 = localStorage.getItem(localStorage.key(0));
+          for(var i=1, len = localStorage.length; i<len ; i++){
+                
+                if(max1<localStorage.getItem(localStorage.key(i))){
+                  if(i!=first){
+                  var second = i;
+                  max1 = localStorage.getItem(localStorage.key(i));
+                  }
+                }
+          }
+          var max2 = localStorage.getItem(localStorage.key(0));
+           for(var i=1, len = localStorage.length; i<len ; i++){
+               
+                if(max2<localStorage.getItem(localStorage.key(i))){
+                  if(i!=first&&i!=second){
+                  var third = i;
+                  max2 = localStorage.getItem(localStorage.key(i));
+                  }
+                }
+          }
+          
+           document.getElementById("td3").innerHTML=localStorage.key(first);
+           document.getElementById("td4").innerHTML=localStorage.getItem(localStorage.key(first));
+           document.getElementById("td5").innerHTML=localStorage.key(second);
+           document.getElementById("td6").innerHTML=localStorage.getItem(localStorage.key(second));
+           document.getElementById("td7").innerHTML=localStorage.key(third);
+           document.getElementById("td8").innerHTML=localStorage.getItem(localStorage.key(third));
+          // for (var i=0, len = localStorage.length; i<len-1 ; i++){    
+          //    for (var j=i+1, len = localStorage.length; j<len; j++){
+          //      if(localStorage.getItem(localStorage.key(j))>localStorage.getItem(localStorage.key(i))){
+          //        var temp = localStorage.getItem(localStorage.key(j));
+          //        var temp1 =  localStorage.key(j);
+          //        localStorage.key(j) = localStorage.key(i);
+          //        localStorage.key(i) = temp1;
+          //        localStorage.setItem(localStorage.key(j),localStorage.getItem(localStorage.key(i)));
+          //        localStorage.setItem(localStorage.key(i),temp);
+
+          //         }
+          //     }
+          //  }
+
+
           alert("您当前剩余" + life + "次机会！");
           if (life > 0) {
               //剩余生命时从当前关卡开始
               startLevel(n);
           } else {
               //生命为0时直接从起始关开始
-              document.getElementById("finish").innerHTML=1;
+              // document.getElementById("finish").innerHTML=1;
               alert("游戏结束！");
           }
       }

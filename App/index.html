@@ -18,7 +18,8 @@
   
 
     function test(){
-      var msg = sessionStorage.key(0);
+      var tt = sessionStorage.length -1;
+      var msg = sessionStorage.key(tt);
       var tr = document.createElement("tr");
       var td1 = document.createElement("td");
       var td2 = document.createElement("td");
@@ -29,6 +30,40 @@
       tr.appendChild(td1);
       tr.appendChild(td2);    
       document.getElementById("table1").appendChild(tr);
+      var max = localStorage.getItem(localStorage.key(0));
+          for(var i=1, len = localStorage.length; i<len ; i++){
+                if(max<localStorage.getItem(localStorage.key(i))){
+                  var first = i;
+                  max = localStorage.getItem(localStorage.key(i));
+                }
+          }
+          var max1 = localStorage.getItem(localStorage.key(0));
+          for(var i=1, len = localStorage.length; i<len ; i++){
+                
+                if(max1<localStorage.getItem(localStorage.key(i))){
+                  if(i!=first){
+                  var second = i;
+                  max1 = localStorage.getItem(localStorage.key(i));
+                  }
+                }
+          }
+          var max2 = localStorage.getItem(localStorage.key(0));
+           for(var i=1, len = localStorage.length; i<len ; i++){
+               
+                if(max2<localStorage.getItem(localStorage.key(i))){
+                  if(i!=first&&i!=second){
+                  var third = i;
+                  max2 = localStorage.getItem(localStorage.key(i));
+                  }
+                }
+          }
+          
+           document.getElementById("td3").innerHTML=localStorage.key(first);
+           document.getElementById("td4").innerHTML=localStorage.getItem(localStorage.key(first));
+           document.getElementById("td5").innerHTML=localStorage.key(second);
+           document.getElementById("td6").innerHTML=localStorage.getItem(localStorage.key(second));
+           document.getElementById("td7").innerHTML=localStorage.key(third);
+           document.getElementById("td8").innerHTML=localStorage.getItem(localStorage.key(third));
     }
     document.body.onload = function(){
       test();
@@ -43,18 +78,32 @@
     <th align=center>账号</th>
     <th align=center>积分</th>
   </tr>
-  <!--<tr>
-    <td align=center>玩家1<output type="text" name="first" id="first"/td>
-    <td align=center>3<output type="text" name="firstmark" id="firstmark"/td>
+</table>
+</div>
+
+<div  id="list">
+<table border="1" width= 200px id="table2">
+  <caption align="top">TOP 3</caption>
+  <tr>
+    <th align=center></th>
+    <th align=center>账号</th>
+    <th align=center>积分</th>
   </tr>
   <tr>
-    <td align=center>玩家2<output type="text" name="second" id="second"/td>
-    <td align=center>2<output type="text" name="secondmark" id="secondmark"/td>
-  </tr>-->
-  <!--<tr>
-    <td align=center id='playname' >玩家3<output type="text" name="third" /td>
-    <td align=center id='coinNum'>0<output type="text" name="thirdmark" /td>
-  </tr>-->
+    <th align=center>第一</th>
+    <td id ="td3"></td>
+    <td id ="td4"></td>
+  </tr>
+  <tr>
+    <th align=center>第二</th>
+    <td id ="td5"></td>
+    <td id ="td6"></td>
+  </tr>
+  <tr>
+    <th align=center>第三</th>
+    <td id ="td7"></td>
+    <td id ="td8"></td>
+  </tr>
 </table>
 </div>
 
