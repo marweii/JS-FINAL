@@ -1,0 +1,111 @@
+<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="content/assets/js/15_game.js"></script>
+<script src="content/assets/js/GAME_LEVELS.js"></script>
+
+<link rel="stylesheet" href="content/assets/css/game.css">
+
+<head>
+  <EMBED src="fc.mp3" autostart="true" loop="true" width="80" height="80"></EMBED>
+</head>
+
+<body>
+  <script>
+    runGame(GAME_LEVELS, DOMDisplay);
+  </script>
+
+<script>
+  
+
+    function test(){
+      var tt = sessionStorage.length -1;
+      var msg = sessionStorage.key(tt);
+      var tr = document.createElement("tr");
+      var td1 = document.createElement("td");
+      var td2 = document.createElement("td");
+      td2.id='coinNum';
+      tr.align = "center";
+      td1.innerHTML = msg;
+      td2.innerHTML = 0;
+      tr.appendChild(td1);
+      tr.appendChild(td2);    
+      document.getElementById("table1").appendChild(tr);
+     var max = localStorage.getItem(localStorage.key(0));
+          for(var i=1, len = localStorage.length; i<len ; i++){
+                if(parseInt(max)<parseInt(localStorage.getItem(localStorage.key(i)))){
+                  var first = i;
+                  max = localStorage.getItem(localStorage.key(i));
+                }
+          }
+
+          var max1 = localStorage.getItem(localStorage.key(0));
+          for(var i=1, len = localStorage.length; i<len ; i++){
+                
+                if(parseInt(max1)<parseInt(localStorage.getItem(localStorage.key(i)))){
+                  if(i!=first){
+                  var second = i;
+                  max1 = localStorage.getItem(localStorage.key(i));
+                  }
+                }
+          }
+          var max2 = localStorage.getItem(localStorage.key(0));
+           for(var i=1, len = localStorage.length; i<len ; i++){
+               
+                if(parseInt(max2)<parseInt(localStorage.getItem(localStorage.key(i)))){
+                  if(i!=first&&i!=second){
+                  var third = i;
+                  max2 = localStorage.getItem(localStorage.key(i));
+                  }
+                }
+          }
+          
+           document.getElementById("td3").innerHTML=localStorage.key(first);
+           document.getElementById("td4").innerHTML=localStorage.getItem(localStorage.key(first));
+           document.getElementById("td5").innerHTML=localStorage.key(second);
+           document.getElementById("td6").innerHTML=localStorage.getItem(localStorage.key(second));
+           document.getElementById("td7").innerHTML=localStorage.key(third);
+           document.getElementById("td8").innerHTML=localStorage.getItem(localStorage.key(third));
+    }
+    document.body.onload = function(){
+      test();
+    }
+
+</script>
+
+
+<div  id="class">
+<table border="1" width= 200px id="table1">
+  <tr>
+    <th align=center>账号</th>
+    <th align=center>积分</th>
+  </tr>
+</table>
+</div>
+
+<div  id="list">
+<table border="1" width= 200px id="table2">
+  <caption align="top">TOP 3</caption>
+  <tr>
+    <th align=center></th>
+    <th align=center>账号</th>
+    <th align=center>积分</th>
+  </tr>
+  <tr>
+    <th align=center>第一</th>
+    <td id ="td3"></td>
+    <td id ="td4"></td>
+  </tr>
+  <tr>
+    <th align=center>第二</th>
+    <td id ="td5"></td>
+    <td id ="td6"></td>
+  </tr>
+  <tr>
+    <th align=center>第三</th>
+    <td id ="td7"></td>
+    <td id ="td8"></td>
+  </tr>
+</table>
+</div>
+
+</body>
