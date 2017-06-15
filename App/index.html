@@ -1,110 +1,74 @@
-<!doctype html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script src="content/assets/js/15_game.js"></script>
-<script src="content/assets/js/GAME_LEVELS.js"></script>
-
-<link rel="stylesheet" href="content/assets/css/game.css">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <EMBED src="fc.mp3" autostart="true" loop="true" width="80" height="80"></EMBED>
-</head>
+<title>JS脚本实现用户登录注册页面</title>
+<meta charset="GB2313">
+<script>
+function r() {
+   var userid=document.getElementById("username");
+   var username =userid.value;
+   var pwdid=document.getElementById("password");
+   var password =pwdid.value;
+   var storage = window.localStorage;
+   var ys = 0; 
+   for (var i=0, len = sessionStorage.length; i<len; i++){      
+   var key = sessionStorage.key(i);     
+   if(username==key){
+     var value = sessionStorage.getItem(key); 
+     if(password==value){
+          ys = 1;    
+        //    sessionStorage.setItem(username, password);
+     window.location.href="file:///D:/GitHub/JS-FINAL/App/game.html";
+        }
+    }
+}
+if(ys==0){
+alert("账号或者密码错误！");
+}
+}
+</script>
 
-<body>
-  <script>
-    runGame(GAME_LEVELS, DOMDisplay);
-  </script>
 
 <script>
-  
-
-    function test(){
-      var tt = sessionStorage.length -1;
-      var msg = sessionStorage.key(tt);
-      var tr = document.createElement("tr");
-      var td1 = document.createElement("td");
-      var td2 = document.createElement("td");
-      td2.id='coinNum';
-      tr.align = "center";
-      td1.innerHTML = msg;
-      td2.innerHTML = 0;
-      tr.appendChild(td1);
-      tr.appendChild(td2);    
-      document.getElementById("table1").appendChild(tr);
-      var max = localStorage.getItem(localStorage.key(0));
-          for(var i=1, len = localStorage.length; i<len ; i++){
-                if(max<localStorage.getItem(localStorage.key(i))){
-                  var first = i;
-                  max = localStorage.getItem(localStorage.key(i));
-                }
-          }
-          var max1 = localStorage.getItem(localStorage.key(0));
-          for(var i=1, len = localStorage.length; i<len ; i++){
-                
-                if(max1<localStorage.getItem(localStorage.key(i))){
-                  if(i!=first){
-                  var second = i;
-                  max1 = localStorage.getItem(localStorage.key(i));
-                  }
-                }
-          }
-          var max2 = localStorage.getItem(localStorage.key(0));
-           for(var i=1, len = localStorage.length; i<len ; i++){
-               
-                if(max2<localStorage.getItem(localStorage.key(i))){
-                  if(i!=first&&i!=second){
-                  var third = i;
-                  max2 = localStorage.getItem(localStorage.key(i));
-                  }
-                }
-          }
-          
-           document.getElementById("td3").innerHTML=localStorage.key(first);
-           document.getElementById("td4").innerHTML=localStorage.getItem(localStorage.key(first));
-           document.getElementById("td5").innerHTML=localStorage.key(second);
-           document.getElementById("td6").innerHTML=localStorage.getItem(localStorage.key(second));
-           document.getElementById("td7").innerHTML=localStorage.key(third);
-           document.getElementById("td8").innerHTML=localStorage.getItem(localStorage.key(third));
-    }
-    document.body.onload = function(){
-      test();
-    }
+function z(){
+if (typeof(sessionStorage) !== "undefined") {
+   var temp = 0; 
+   var userid=document.getElementById("username");
+   var username =userid.value;
+   var storage = window.localStorage;
+   for (var i=0, len = sessionStorage.length; i<len; i++){   
+   var key = sessionStorage.key(i);     
+   if(username==key){
+        alert("账号已存在！");
+        temp =1;
+   }
+}
+if(temp==0){
+       var pwdid=document.getElementById("password");
+       var password =pwdid.value;
+       sessionStorage.setItem(username,password);
+       alert("注册成功！");
+}
+} else {
+    document.getElementById("username").innerHTML = "抱歉！您的浏览器不支持 Web Storage ...";
+}
+}
 
 </script>
 
 
-<div  id="class">
-<table border="1" width= 200px id="table1">
-  <tr>
-    <th align=center>账号</th>
-    <th align=center>积分</th>
-  </tr>
-</table>
-</div>
 
-<div  id="list">
-<table border="1" width= 200px id="table2">
-  <caption align="top">TOP 3</caption>
-  <tr>
-    <th align=center></th>
-    <th align=center>账号</th>
-    <th align=center>积分</th>
-  </tr>
-  <tr>
-    <th align=center>第一</th>
-    <td id ="td3"></td>
-    <td id ="td4"></td>
-  </tr>
-  <tr>
-    <th align=center>第二</th>
-    <td id ="td5"></td>
-    <td id ="td6"></td>
-  </tr>
-  <tr>
-    <th align=center>第三</th>
-    <td id ="td7"></td>
-    <td id ="td8"></td>
-  </tr>
-</table>
-</div>
 
+</head>
+<body>
+<form>
+
+<table width="350" bgcolor="#ccffcc" border="5">
+<tr align=center><td>用户名</td><td><input type="text" name="username" id="username"></td></tr>
+<tr align=center><td>密 码</td><td><input type="password" name="password" id="password"></td></tr>
+<tr align=center><td colspan="2"><input type="button" value="登 录" onclick="r();" />        <input type="button" value="注 册"onclick="z();" /></td></tr>
+
+</table>
+</form>
 </body>
+</html>

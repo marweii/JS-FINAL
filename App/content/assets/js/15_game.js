@@ -365,15 +365,16 @@ function runGame(plans, Display) {
           localStorage.setItem(name1,coinsum);
           var max = localStorage.getItem(localStorage.key(0));
           for(var i=1, len = localStorage.length; i<len ; i++){
-                if(max<localStorage.getItem(localStorage.key(i))){
+                if(parseInt(max)<parseInt(localStorage.getItem(localStorage.key(i)))){
                   var first = i;
                   max = localStorage.getItem(localStorage.key(i));
                 }
           }
+
           var max1 = localStorage.getItem(localStorage.key(0));
           for(var i=1, len = localStorage.length; i<len ; i++){
                 
-                if(max1<localStorage.getItem(localStorage.key(i))){
+                if(parseInt(max1)<parseInt(localStorage.getItem(localStorage.key(i)))){
                   if(i!=first){
                   var second = i;
                   max1 = localStorage.getItem(localStorage.key(i));
@@ -383,7 +384,7 @@ function runGame(plans, Display) {
           var max2 = localStorage.getItem(localStorage.key(0));
            for(var i=1, len = localStorage.length; i<len ; i++){
                
-                if(max2<localStorage.getItem(localStorage.key(i))){
+                if(parseInt(max2)<parseInt(localStorage.getItem(localStorage.key(i)))){
                   if(i!=first&&i!=second){
                   var third = i;
                   max2 = localStorage.getItem(localStorage.key(i));
