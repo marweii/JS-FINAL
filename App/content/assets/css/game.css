@@ -43,3 +43,16 @@
   top: 250px;
   
 }
+#guanka{
+  position: absolute;
+  left:200px;
+  top: 20px;
+  
+}
+#denglu{
+  position: relative;
+  left: 710px;
+  top: 200px;
+  background: rgba(255,255,255,0.2);width:400px;height:220px;
+  background-position: center;
+}
